@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Core.Models;
+@using Umbraco.Cms.Core.Models;
+@using Umbraco.Cms.Web;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Home>
+@{
+    Layout = "Master.cshtml";
+}
+<d
+<div class="d-flex justify-content-center navigation w-75 my-4 mx-auto">
+    <div class="navbar-brand">
+        @{
+            var logo = Model.Value<Image>("logo");
+            if (null != logo)
+            {
+                <img class="rounded " src="@logo.UmbracoFile.Src" style="height:150px;">
+            }
+        }
+    </div>
+</div>

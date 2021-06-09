@@ -1,0 +1,25 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<nav class="navbar justify-content-center" style="font-size:1.2rem">
+    @{
+        var navList = Model.Value("Links") as BlockListModel;
+
+        foreach (var element in navList.Select(p => p.Content))
+        {
+            var page = element as PageLink;
+
+            if (page.Hidden)
+            {
+                continue;
+            }
+
+            var link = page.Value("reference") as Link;
+
+            <a class="mx-4 text-dark" href="@link.Url"> @link.Name </a>
+        }
+    }
+</nav>
